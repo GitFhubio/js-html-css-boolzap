@@ -90,7 +90,8 @@ contacts: [
     admin: { name:'Marianna',
       avatar:'_io',
       visible:false,
-    }
+    },
+    newMessage:""
 }
 ,methods:{
 nowActive:function(index){
@@ -100,6 +101,20 @@ nowActive:function(index){
  });
 this.contacts[index].visible=true;
 }
+,
+addMessage:function(){
+ let msg=this.newMessage;
+  this.contacts.forEach((item, i) => {
+    if(item.visible==true && msg!=''){
+      item.messages=[...item.messages,{
+      date: '10/01/2020 15:30:55',
+      text: msg,
+      status: 'received'
+      }]; }
+  });
+  this.newMessage='';
+}
+
 }
 });
 

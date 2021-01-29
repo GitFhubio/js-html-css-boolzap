@@ -85,7 +85,7 @@
           <div class="icon-left flex">
             <i class="far fa-smile" aria-hidden="true"></i>
           </div>
-          <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio">
+          <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio" @keyup.enter="addMessage">
           <div class="icon-right flex">
             <i class="fas fa-microphone" aria-hidden="true"></i>
           </div>
