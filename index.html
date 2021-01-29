@@ -42,10 +42,10 @@
         </div>
         <div class="contacts-list">
           <div class="contacts flex">
-            <div class="flex">
-              <img  src="" alt="contact">
+            <div v-for="(contact,index) in contacts" class="flex">
+              <img  :src="'img/avatar'+contacts[index].avatar+'.jpg'" alt="contact">
               <div>
-                <h3>nome contatto</h3>
+                <h3>{{contact.name}}</h3>
               </div>
             </div>
           </div>
