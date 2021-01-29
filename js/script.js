@@ -71,7 +71,7 @@ contacts: [
     },
     {
     name: 'Luisa',
-    avatar: '_4',
+    avatar: '_6',
     visible: false,
     messages: [
       {
