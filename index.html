@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <title>Base esercizio whatsapp</title>
   <meta name="description" content="Esercizio">
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
  <!-- Font Awesome -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="top_banner">
-
   </header>
   <div class="container flex">
     <div id="boolzapp" class="app_wrapper flex">
@@ -19,7 +18,7 @@
       <!-- sezione mio profilo -->
      <div class="myprofile flex">
       <div class="myavatar flex">
-      <img :src="" alt=""><h2>blabla</h2>
+      <img src="" alt=""><h2>blabla</h2>
       </div>
       <div class="mytools">
 <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
@@ -39,12 +38,12 @@
       <!-- fine sezione notifiche -->
       <div class="search flex">
         <span class="icon-input flex"> <i class="fa fa-search" aria-hidden="true"></i> </span>
-      <input type="text" name="" v-model="search" placeholder="Cerca o inizia nuova chat">
+      <input type="text" name="" v-model="search" :placeholder="placeholder">
       </div>
       <div class="contacts-list">
         <div class="contacts flex">
         <div class="flex">
-        <img  :src="" alt="contact">
+        <img  src="" alt="contact">
             <div>
               <h3>nome contatto</h3>
             </div>
@@ -57,7 +56,7 @@
      <section>
        <div class="current-user flex">
         <div class="profile flex" >
-         <img :src="" alt="current-contact">
+         <img src="" alt="current-contact">
           <div>
             <h2>fffff</h2>
             <p>Ultimo accesso oggi alle </p>
