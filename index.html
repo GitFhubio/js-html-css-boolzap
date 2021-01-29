@@ -37,15 +37,16 @@
         </div>
         <!-- fine sezione notifiche -->
         <div class="search flex">
-          <span class="icon-input flex"> <i class="fa fa-search" aria-hidden="true"></i> </span>
+          <div class="icon-input flex"> <i class="fa fa-search" aria-hidden="true"></i> </div>
           <input type="text" name="" v-model="search" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contacts-list">
           <div class="contacts flex">
-            <div v-for="(contact,index) in contacts" class="flex">
+            <div v-for="(contact,index) in contacts" class="flex" @click='nowActive(index)'>
               <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
               <div>
                 <h3>{{contact.name}}</h3>
+                <p>Ultimo messaggio</p>
               </div>
             </div>
           </div>
@@ -59,7 +60,7 @@
             <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
             <div>
               <h2>{{contact.name}}</h2>
-              <p>Ultimo accesso oggi alle </p>
+              <p>Ultimo accesso oggi alle 17:10</p>
             </div>
           </div>
 

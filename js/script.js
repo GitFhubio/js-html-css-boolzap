@@ -91,10 +91,16 @@ contacts: [
       avatar:'_io',
       visible:false,
     }
-},
-methods:{
-
-
 }
-
+,methods:{
+nowActive:function(index){
+ this.contacts.forEach((item, i) => {
+   if(item.visible==true){
+     item.visible=false; }
+ });
+this.contacts[index].visible=true;
+}
+}
 });
+
+// sicuramente cliccando su un contatto della lista dovrà diventare attivo,mi serve una funzione
