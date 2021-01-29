@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Base esercizio whatsapp</title>
+  <meta name="description" content="Esercizio">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top_banner">
+  </header>
+  <div class="container flex">
+    <div id="boolzapp" class="app_wrapper flex">
+      <aside>
+        <!-- sezione mio profilo -->
+        <div class="myprofile flex">
+          <div class="myavatar flex">
+            <img :src="'img/avatar'+admin.avatar+'.jpg'" alt=""><h2>{{admin.name}}</h2>
+          </div>
+          <div class="mytools">
+            <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </div>
+        </div>
+        <!-- fine sezione mio profilo -->
+        <!-- inizio sezione notifiche -->
+        <div class="notifiche flex">
+          <span class="flex"><i class="fa fa-bell-slash" aria-hidden="true"></i></span>
+          <div>
+            <h4>Ricevi notifiche di nuovi messaggi</h4>
+            <a href="#">Attiva notifiche desktop</a>
+          </div>
+        </div>
+        <!-- fine sezione notifiche -->
+        <div class="search flex">
+          <div class="icon-input flex"> <i class="fa fa-search" aria-hidden="true"></i> </div>
+          <input type="text" name="" @keyup="searchUser" v-model="search" placeholder="Cerca o inizia una nuova chat">
+        </div>
+        <div class="contacts-list">
+          <div class="contacts flex">
+            <div v-for="(contact,index) in contacts" class="flex" v-if="contact.matched==true" @click='nowActive(index)'>
+              <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
+              <div>
+                <h3>{{contact.name}}</h3>
+                <p>Ultimo messaggio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- fine aside -->
+      <!-- inizio main section -->
+      <section>
+        <div class="current-user flex">
+          <div v-for="(contact,index) in contacts" v-if="contact.visible==true" class="profile flex" >
+            <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
+            <div>
+              <h2>{{contact.name}}</h2>
+              <p>Ultimo accesso oggi alle 17:10</p>
+            </div>
+          </div>
+
+          <div class="tools">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <i class="fa fa-paperclip" aria-hidden="true"></i>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <i></i>
+          </div>
+        </div>
+        <div class="chat">
+       <div class="flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
+         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
+        <h3>{{message.text}}</h3>
+        <p>{{message.date}}</p>
+       </div>
+      </div>
+        </div>
+        <div class="write-message flex">
+          <div class="icon-left flex">
+            <i class="fa fa-smile-o" aria-hidden="true"></i>
+          </div>
+          <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio">
+          <div class="icon-right flex">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+</html>
