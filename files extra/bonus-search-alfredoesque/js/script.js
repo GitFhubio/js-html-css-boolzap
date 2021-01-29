@@ -66,7 +66,7 @@ contacts: [
     status: 'sent'
       },
       {
-      date: '28/03/2020 16:15:22',
+      date: '29/01/2020 16:15:22',
       text: 'Ah scusa!',
       status: 'received'
       }
@@ -84,7 +84,7 @@ contacts: [
       status: 'sent'
       },
       {
-      date: '10/01/2020 15:50:00',
+      date: '29/01/2020 15:50:00',
       text: 'Si, ma preferirei andare al cinema',
       status: 'received'
       }
@@ -95,7 +95,9 @@ contacts: [
       avatar:'_io',
       visible:false,
     },
-    newMessage:""
+    newMessage:"",
+    today:"",
+    search:""
 }
 ,methods:{
 nowActive:function(index){
@@ -109,7 +111,8 @@ this.contacts[index].visible=true;
 addMessage:function(){
  let msg=this.newMessage;
   this.contacts.forEach((item, i) => {
-    if(item.visible==true && msg!=''){
+    console.log(item.messages[item.messages.length-1].date.slice(0,5) == this.today);
+  if(item.visible==true && msg!=''){
       item.messages=[...item.messages,{
       date: '10/01/2020 15:30:55',
       text: msg,
@@ -131,10 +134,31 @@ searchUser:function(){
 
   });
 
-}
+},
+nowTime:function(){
+  let day=(new Date).getDate();
+  let month=(new Date).getMonth()+1;
+  this.today=day+'/0'+month;
+  console.log(this.today);
 
+},
 
+LastAccessToday:function(contact){
+
+    if(contact.messages[contact.messages.length-1].date.slice(0,5) == this.today){
+         return true }
+      else {
+        return false;
+
+      }
+  }
+
+},
+mounted() {
+
+  this.nowTime();
 }
+// devo fare che se la data è quella di oggi allora mette l'ora senno deve mettere il giorno
 
 
 });

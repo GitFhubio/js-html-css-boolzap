@@ -52,7 +52,8 @@
                 <p>{{contact.messages[contact.messages.length-1].text}}</p>
                 </div>
                 </div>
-              <span class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
+              <span v-if="!LastAccessToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(0,5)}}</span>
+              <span v-if="LastAccessToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
             </div>
           </div>
         </div>
@@ -65,7 +66,8 @@
             <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
             <div>
               <h2>{{contact.name}}</h2>
-              <p>Ultimo accesso oggi alle 17:10</p>
+              <p v-if="LastAccessToday(contact)">Ultimo accesso oggi alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
+              <p v-if="!LastAccessToday(contact)">Ultimo accesso il {{contact.messages[contact.messages.length-1].date.slice(0,5)}} alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
             </div>
           </div>
 
