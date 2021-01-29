@@ -143,7 +143,7 @@ nowTime:function(){
 
 },
 
-LastAccessToday:function(contact){
+LastChatToday:function(contact){
 
     if(contact.messages[contact.messages.length-1].date.slice(0,5) == this.today){
          return true }
