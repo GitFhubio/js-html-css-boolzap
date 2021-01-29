@@ -38,7 +38,7 @@
         <!-- fine sezione notifiche -->
         <div class="search flex">
           <span class="icon-input flex"> <i class="fa fa-search" aria-hidden="true"></i> </span>
-          <input type="text" name="" v-model="search" :placeholder="placeholder">
+          <input type="text" name="" v-model="search" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contacts-list">
           <div class="contacts flex">
@@ -71,9 +71,12 @@
           </div>
         </div>
         <div class="chat">
-
-
-
+       <div v-for="(contact,index) in contacts" v-if="contact.visible==true">
+         <div v-for="(message,ind) in contact.messages" class="messages flex">
+        <h3>{{message.text}}</h3>
+        <p>{{message.date}}</p>
+       </div>
+      </div>
         </div>
         <div class="write-message flex">
           <div class="icon-left flex">

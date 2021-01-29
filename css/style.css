@@ -136,6 +136,26 @@ height:calc(100% - 200px);
 overflow-y: auto;
 background-image: url('../img/mine.jpg')
 }
+.messages{
+  position:relative;
+  align-items: center;
+  width:350px;
+  border-radius:10px;
+  margin-top:10px;
+  margin-bottom: 10px;
+height:100px;
+}
+.messages p{
+position:absolute;
+color:#000;
+opacity:0.4;
+bottom:12px;
+right:15px;
+
+}
+.chat>.flex {
+  flex-direction: column;
+}
 .write-message{
 background-color: #EAEAEA;
 justify-content: space-between;
