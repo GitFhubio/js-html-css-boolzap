@@ -86,7 +86,10 @@ align-items:center;
 justify-content: center;
 border-radius: 50%;
 }
-
+.notifiche i{
+color: #7CDCFF;
+font-size: 20px;
+}
 .search{
   justify-content: center;
   align-items: center;
@@ -176,4 +179,11 @@ height:80%;
 width:10%;
 justify-content: center;
 align-items: center;
+}
+.myprofile i, .current-user i{
+margin-right:10px;
+font-size: 25px;
+}
+.write-message i{
+font-size: 25px;
 }
