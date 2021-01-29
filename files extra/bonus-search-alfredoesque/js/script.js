@@ -97,6 +97,7 @@ contacts: [
     },
     newMessage:"",
     today:"",
+    todayfull:"",
     search:""
 }
 ,methods:{
@@ -114,7 +115,7 @@ addMessage:function(){
     console.log(item.messages[item.messages.length-1].date.slice(0,5) == this.today);
   if(item.visible==true && msg!=''){
       item.messages=[...item.messages,{
-      date: '10/01/2020 15:30:55',
+      date:this.todayfull,
       text: msg,
       status: 'sent'
       }]; }
@@ -138,9 +139,15 @@ searchUser:function(){
 nowTime:function(){
   let day=(new Date).getDate();
   let month=(new Date).getMonth()+1;
+  let year=(new Date).getFullYear();
+  if(month<10){
   this.today=day+'/0'+month;
+} else{
+    this.today=day+'/'+month;
+}
   console.log(this.today);
-
+  this.todayfull=this.today+'/'+year+' '+(new Date).getHours() +':'+ (new Date).getMinutes();
+  console.log(this.todayfull);
 },
 
 LastChatToday:function(contact){
