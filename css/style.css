@@ -124,16 +124,21 @@ font-size: 20px;
 }
 .contacts>div{
   align-items: center;
-  margin-bottom: 5px;
+  border-bottom: 2px solid #eee;
 }
 .contacts>div:hover{
-background-color: #ccc;
+background-color: #eee;
 }
 .current-user{
   align-items: center;
   justify-content: space-between;
   background-color: #EAEAEA;
   height:100px;
+}
+.current-user p,.contacts-list p{
+  color:#000;
+  opacity:0.4;
+ margin-top: 7px;
 }
 .profile{
   align-items: center;
@@ -187,6 +192,7 @@ align-items: center;
 .myprofile i, .current-user i{
 margin-right:10px;
 font-size: 25px;
+color:#b1b1b1;
 }
 .write-message i{
 font-size: 25px;
