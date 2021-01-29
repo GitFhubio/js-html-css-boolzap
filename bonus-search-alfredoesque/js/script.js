@@ -113,7 +113,7 @@ addMessage:function(){
       item.messages=[...item.messages,{
       date: '10/01/2020 15:30:55',
       text: msg,
-      status: 'received'
+      status: 'sent'
       }]; }
   });
   this.newMessage='';
