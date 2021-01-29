@@ -116,23 +116,38 @@ font-size: 20px;
 .search input:focus{
   outline:none;
 }
+.search .fa-search{
+    opacity:0.3;
+  font-size: 18px;
+}
 .contacts-list{
   height:calc(100% - 260px);
   overflow-y:auto;
   background-color: #fff;
 }
 .contacts{
-  flex-direction: column;
-  justify-content: space-between;
   height:100px;
 }
 .contacts>div{
-  align-items: center;
+  justify-content: space-between;
   border-bottom: 2px solid #eee;
   padding:10px 0;
 }
+.contacts>div:last-child{
+  border-bottom:none; 
+}
 .contacts>div:hover{
 background-color: #eee;
+}
+.contact-box{
+  flex-direction: column;
+  justify-content: center;
+}
+.date{
+  position:relative;
+right:10px;
+top:10px;
+opacity:0.4;
 }
 .current-user{
   align-items: center;
@@ -141,7 +156,6 @@ background-color: #eee;
   height:100px;
 }
 .current-user p,.contacts-list p{
-  color:#000;
   opacity:0.4;
  margin-top: 7px;
 }
@@ -181,12 +195,17 @@ height:100px;
 
 }
 .write-message input{
-border: none;
+border-radius: 7px;
 padding:20px;
 font-size: 18px;
 display:block;
 width:85%;
-height:80%;
+height:70%;
+}
+.write-message input:focus{
+outline:0;
+border-color:blue;
+
 }
 
 .icon-left,.icon-right{

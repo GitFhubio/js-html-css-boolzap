@@ -43,13 +43,16 @@
           <input type="text" name="" v-model="search" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contacts-list">
-          <div class="contacts flex">
+          <div class="contacts">
             <div v-for="(contact,index) in contacts" class="flex" @click='nowActive(index)'>
+              <div class="flex">
               <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
-              <div>
+               <div class="contact-box flex">
                 <h3>{{contact.name}}</h3>
                 <p>Ultimo messaggio</p>
-              </div>
+                </div>
+                </div>
+              <span class="date">data</span>
             </div>
           </div>
         </div>
