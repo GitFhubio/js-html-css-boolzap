@@ -52,7 +52,7 @@
                 <p>{{contact.messages[contact.messages.length-1].text}}</p>
                 </div>
                 </div>
-              <span class="date">{{contact.messages[contact.messages.length-1].date}}</span>
+              <span @click="getDate" class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
        <div class="flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
          <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
         <h3>{{message.text}}</h3>
-        <p>{{message.date}}</p>
+        <p>{{message.date.slice(11,16)}}</p>
        </div>
       </div>
         </div>

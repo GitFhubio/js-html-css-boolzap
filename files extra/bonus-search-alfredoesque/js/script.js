@@ -133,7 +133,10 @@ searchUser:function(){
 
 }
 
+
 }
+
+
 });
 
 // sicuramente cliccando su un contatto della lista dovrà diventare attivo,mi serve una funzione
