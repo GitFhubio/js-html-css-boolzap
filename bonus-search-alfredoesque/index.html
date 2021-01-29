@@ -5,8 +5,10 @@
   <title>Base esercizio whatsapp</title>
   <meta name="description" content="Esercizio">
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,15 +23,15 @@
             <img :src="'img/avatar'+admin.avatar+'.jpg'" alt=""><h2>{{admin.name}}</h2>
           </div>
           <div class="mytools">
-            <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
-            <i class="fa fa-commenting-o" aria-hidden="true"></i>
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <i class="fas fa-circle-notch" aria-hidden="true"></i>
+            <i class="fas fa-comment-alt" aria-hidden="true"></i>
+            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
           </div>
         </div>
         <!-- fine sezione mio profilo -->
         <!-- inizio sezione notifiche -->
         <div class="notifiche flex">
-          <span class="flex"><i class="fa fa-bell-slash" aria-hidden="true"></i></span>
+          <span class="flex"><i class="fas fa-bell-slash" aria-hidden="true"></i></span>
           <div>
             <h4>Ricevi notifiche di nuovi messaggi</h4>
             <a href="#">Attiva notifiche desktop</a>
@@ -37,17 +39,20 @@
         </div>
         <!-- fine sezione notifiche -->
         <div class="search flex">
-          <div class="icon-input flex"> <i class="fa fa-search" aria-hidden="true"></i> </div>
-          <input type="text" name="" @keyup="searchUser" v-model="search" placeholder="Cerca o inizia una nuova chat">
+          <div class="icon-input flex"> <i class="fas fa-search" aria-hidden="true"></i> </div>
+          <input type="text" name="" v-model="search" placeholder="Cerca o inizia una nuova chat" @keyup="searchUser">
         </div>
         <div class="contacts-list">
-          <div class="contacts flex">
+          <div class="contacts">
             <div v-for="(contact,index) in contacts" class="flex" v-if="contact.matched==true" @click='nowActive(index)'>
+              <div class="flex">
               <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
-              <div>
+               <div class="contact-box flex">
                 <h3>{{contact.name}}</h3>
                 <p>Ultimo messaggio</p>
-              </div>
+                </div>
+                </div>
+              <span class="date">data</span>
             </div>
           </div>
         </div>
@@ -65,9 +70,9 @@
           </div>
 
           <div class="tools">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <i class="fa fa-paperclip" aria-hidden="true"></i>
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <i class="fas fa-paperclip" aria-hidden="true"></i>
+            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
             <i></i>
           </div>
         </div>
@@ -81,11 +86,11 @@
         </div>
         <div class="write-message flex">
           <div class="icon-left flex">
-            <i class="fa fa-smile-o" aria-hidden="true"></i>
+            <i class="far fa-smile" aria-hidden="true"></i>
           </div>
-          <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio">
+          <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio" @keyup.enter="addMessage">
           <div class="icon-right flex">
-            <i class="fa fa-microphone" aria-hidden="true"></i>
+            <i class="fas fa-microphone" aria-hidden="true"></i>
           </div>
         </div>
       </section>

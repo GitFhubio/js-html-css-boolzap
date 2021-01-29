@@ -5,9 +5,9 @@ contacts: [
     {
     name: 'Michele',
     avatar: '_1',
+    matched:true,
     // michele è visibile se prendo visibile come proprietà che definisce chat aperta...gli altri li setto a false
     visible: true,
-    matched:true,
     messages: [
       {
       date: '10/01/2020 15:30:55',
@@ -29,8 +29,8 @@ contacts: [
     {
     name: 'Fabio',
     avatar: '_2',
-    visible: false,
     matched:true,
+    visible: false,
     messages: [
       {
       date: '20/03/2020 16:30:00',
@@ -74,7 +74,7 @@ contacts: [
     },
     {
     name: 'Luisa',
-    avatar: '_4',
+    avatar: '_6',
     visible: false,
     matched:true,
     messages: [
@@ -95,7 +95,7 @@ contacts: [
       avatar:'_io',
       visible:false,
     },
-    search:''
+    newMessage:""
 }
 ,methods:{
 nowActive:function(index){
@@ -104,8 +104,20 @@ nowActive:function(index){
      item.visible=false; }
  });
 this.contacts[index].visible=true;
+}
+,
+addMessage:function(){
+ let msg=this.newMessage;
+  this.contacts.forEach((item, i) => {
+    if(item.visible==true && msg!=''){
+      item.messages=[...item.messages,{
+      date: '10/01/2020 15:30:55',
+      text: msg,
+      status: 'received'
+      }]; }
+  });
+  this.newMessage='';
 },
-
 searchUser:function(){
   let search=this.search;
   this.contacts.forEach((item, i) => {
@@ -120,8 +132,8 @@ searchUser:function(){
   });
 
 }
-}
 
+}
 });
 
 // sicuramente cliccando su un contatto della lista dovrà diventare attivo,mi serve una funzione
