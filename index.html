@@ -71,8 +71,8 @@
           </div>
         </div>
         <div class="chat">
-       <div v-for="(contact,index) in contacts" v-if="contact.visible==true">
-         <div v-for="(message,ind) in contact.messages" class="messages flex">
+       <div class="flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
+         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
         <h3>{{message.text}}</h3>
         <p>{{message.date}}</p>
        </div>
