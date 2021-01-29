@@ -43,7 +43,7 @@
         <div class="contacts-list">
           <div class="contacts flex">
             <div v-for="(contact,index) in contacts" class="flex">
-              <img  :src="'img/avatar'+contacts[index].avatar+'.jpg'" alt="contact">
+              <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
               <div>
                 <h3>{{contact.name}}</h3>
               </div>
@@ -55,10 +55,10 @@
       <!-- inizio main section -->
       <section>
         <div class="current-user flex">
-          <div class="profile flex" >
-            <img src="" alt="current-contact">
+          <div v-for="(contact,index) in contacts" v-if="contact.visible==true" class="profile flex" >
+            <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
             <div>
-              <h2>fffff</h2>
+              <h2>{{contact.name}}</h2>
               <p>Ultimo accesso oggi alle </p>
             </div>
           </div>
