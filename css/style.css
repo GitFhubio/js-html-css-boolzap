@@ -124,6 +124,10 @@ font-size: 20px;
 }
 .contacts>div{
   align-items: center;
+  margin-bottom: 5px;
+}
+.contacts>div:hover{
+background-color: #ccc;
 }
 .current-user{
   align-items: center;
