@@ -50,11 +50,11 @@
              <div class="flex">
              <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
               <div class="contact-box flex">
-               <h3>{{contact.name}}</h3>
-               <p>Ultimo messaggio</p>
+                <h3>{{contact.name}}</h3>
+                <p>{{contact.messages[contact.messages.length-1].text}}</p>
                </div>
                </div>
-             <span class="date">data</span>
+              <span class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
            </div>
          </div>
        </div>
@@ -67,7 +67,7 @@
            <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
            <div>
              <h2>{{contact.name}}</h2>
-             <p>Ultimo accesso oggi alle 17:10</p>
+             <p>Ultimo accesso oggi alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
            </div>
          </div>
 
@@ -82,7 +82,7 @@
       <div class="flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
        <h3>{{message.text}}</h3>
-       <p>{{message.date}}</p>
+       <p>{{message.date.slice(11,16)}}</p>
       </div>
      </div>
        </div>
