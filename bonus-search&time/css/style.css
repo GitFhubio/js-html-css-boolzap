@@ -27,7 +27,7 @@ font-family: 'Lato', sans-serif;
 }
 
 
-.top_banner {
+header {
   height: 20vh;
   background-color: #009688;
 }
@@ -134,7 +134,7 @@ font-size: 20px;
   padding:10px 0;
 }
 .contacts>div:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 .contacts>div:hover{
 background-color: #eee;
