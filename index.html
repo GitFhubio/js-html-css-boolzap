@@ -12,90 +12,92 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-  </header>
-  <div class="container flex">
-    <div id="boolzapp" class="app_wrapper flex">
-      <aside>
-        <!-- sezione mio profilo -->
-        <div class="myprofile flex">
-          <div class="myavatar flex">
-            <img :src="'img/avatar'+admin.avatar+'.jpg'" alt=""><h2>{{admin.name}}</h2>
-          </div>
-          <div class="mytools">
-            <i class="fas fa-circle-notch" aria-hidden="true"></i>
-            <i class="fas fa-comment-alt" aria-hidden="true"></i>
-            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
-          </div>
-        </div>
-        <!-- fine sezione mio profilo -->
-        <!-- inizio sezione notifiche -->
-        <div class="notifiche flex">
-          <span class="flex"><i class="fas fa-bell-slash" aria-hidden="true"></i></span>
-          <div>
-            <h4>Ricevi notifiche di nuovi messaggi</h4>
-            <a href="#">Attiva notifiche desktop</a>
-          </div>
-        </div>
-        <!-- fine sezione notifiche -->
-        <div class="search flex">
-          <div class="icon-input flex"> <i class="fas fa-search" aria-hidden="true"></i> </div>
-          <input type="text" name="" v-model="search" placeholder="Cerca o inizia una nuova chat">
-        </div>
-        <div class="contacts-list">
-          <div class="contacts">
-            <div v-for="(contact,index) in contacts" class="flex" @click='nowActive(index)'>
-              <div class="flex">
-              <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
-               <div class="contact-box flex">
-                <h3>{{contact.name}}</h3>
-                <p>Ultimo messaggio</p>
-                </div>
-                </div>
-              <span class="date">data</span>
-            </div>
-          </div>
-        </div>
-      </aside>
-      <!-- fine aside -->
-      <!-- inizio main section -->
-      <section>
-        <div class="current-user flex">
-          <div v-for="(contact,index) in contacts" v-if="contact.visible==true" class="profile flex" >
-            <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
-            <div>
-              <h2>{{contact.name}}</h2>
-              <p>Ultimo accesso oggi alle 17:10</p>
-            </div>
-          </div>
-
-          <div class="tools">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <i class="fas fa-paperclip" aria-hidden="true"></i>
-            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
-            <i></i>
-          </div>
-        </div>
-        <div class="chat">
-       <div class="flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
-         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
-        <h3>{{message.text}}</h3>
-        <p>{{message.date}}</p>
+ <div class="wrapper">
+   <header>
+   </header>
+   <div class="container">
+   </div>
+   <div id="boolzapp" class="app_wrapper flex">
+     <aside>
+       <!-- sezione mio profilo -->
+       <div class="myprofile flex">
+         <div class="myavatar flex">
+           <img :src="'img/avatar'+admin.avatar+'.jpg'" alt=""><h2>{{admin.name}}</h2>
+         </div>
+         <div class="mytools">
+           <i class="fas fa-circle-notch" aria-hidden="true"></i>
+           <i class="fas fa-comment-alt" aria-hidden="true"></i>
+           <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+         </div>
        </div>
+       <!-- fine sezione mio profilo -->
+       <!-- inizio sezione notifiche -->
+       <div class="notifiche flex">
+         <span class="flex"><i class="fas fa-bell-slash" aria-hidden="true"></i></span>
+         <div>
+           <h4>Ricevi notifiche di nuovi messaggi</h4>
+           <a href="#">Attiva notifiche desktop</a>
+         </div>
+       </div>
+       <!-- fine sezione notifiche -->
+       <div class="search flex">
+         <div class="icon-input flex"> <i class="fas fa-search" aria-hidden="true"></i> </div>
+         <input type="text" name="" v-model="search" placeholder="Cerca o inizia una nuova chat">
+       </div>
+       <div class="contacts-list">
+         <div class="contacts">
+           <div v-for="(contact,index) in contacts" class="flex" @click='nowActive(index)'>
+             <div class="flex">
+             <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
+              <div class="contact-box flex">
+               <h3>{{contact.name}}</h3>
+               <p>Ultimo messaggio</p>
+               </div>
+               </div>
+             <span class="date">data</span>
+           </div>
+         </div>
+       </div>
+     </aside>
+     <!-- fine aside -->
+     <!-- inizio main section -->
+     <section>
+       <div class="current-user flex">
+         <div v-for="(contact,index) in contacts" v-if="contact.visible==true" class="profile flex" >
+           <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
+           <div>
+             <h2>{{contact.name}}</h2>
+             <p>Ultimo accesso oggi alle 17:10</p>
+           </div>
+         </div>
+
+         <div class="tools">
+           <i class="fas fa-search" aria-hidden="true"></i>
+           <i class="fas fa-paperclip" aria-hidden="true"></i>
+           <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+           <i></i>
+         </div>
+       </div>
+       <div class="chat">
+      <div class="flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
+        <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
+       <h3>{{message.text}}</h3>
+       <p>{{message.date}}</p>
       </div>
-        </div>
-        <div class="write-message flex">
-          <div class="icon-left flex">
-            <i class="far fa-smile" aria-hidden="true"></i>
-          </div>
-          <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio" @keyup.enter="addMessage">
-          <div class="icon-right flex">
-            <i class="fas fa-microphone" aria-hidden="true"></i>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+     </div>
+       </div>
+       <div class="write-message flex">
+         <div class="icon-left flex">
+           <i class="far fa-smile" aria-hidden="true"></i>
+         </div>
+         <input type="text" name="" v-model="newMessage" placeholder="Scrivi un messaggio" @keyup.enter="addMessage">
+         <div class="icon-right flex">
+           <i class="fas fa-microphone" aria-hidden="true"></i>
+         </div>
+       </div>
+     </section>
+   </div>
+ </div>
   <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>

@@ -7,7 +7,9 @@
 body{
 font-family: 'Lato', sans-serif;
 }
-
+.wrapper{
+  position:relative;
+}
 /* tool  */
 .flex{
   display: flex;
@@ -28,25 +30,26 @@ font-family: 'Lato', sans-serif;
 
 
 header {
+  min-width: 1200px;
   height: 20vh;
   background-color: #009688;
 }
 
 .container {
+  min-width: 1200px;
   height: 80vh;
   background-color: #DCDCD2;
   justify-content: center;
 }
 #boolzapp {
-  max-width: 86vw;
-  max-height: 82vh;
-  width: 1426px;
-  height: 800px;
-  min-width: 700px;
+  width: 95vw;
+  height: 95vh;
+  min-width: 950px;
   min-height: 420px;
   position: absolute;
-  top: 20px;
-  left:60px;
+  top:2.5vh;
+  left:2.5vw;
+
 }
 
 section{
