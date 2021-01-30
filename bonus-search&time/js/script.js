@@ -165,9 +165,8 @@ mounted() {
 
   this.nowTime();
 }
-// devo fare che se la data è quella di oggi allora mette l'ora senno deve mettere il giorno
-
 
 });
 
-// sicuramente cliccando su un contatto della lista dovrà diventare attivo,mi serve una funzione
+// nel bonus ho montato l'ora con mounted per cui posso fare funzione che se
+// l'ultimo messaggio è di oggi compare la data,altrimenti compare il giorno
