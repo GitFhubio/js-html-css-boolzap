@@ -66,7 +66,7 @@ contacts: [
     status: 'sent'
       },
       {
-      date: '29/01/2020 16:15:22',
+      date: '30/01/2020 16:15:22',
       text: 'Ah scusa!',
       status: 'received'
       }
@@ -140,13 +140,17 @@ nowTime:function(){
   let day=(new Date).getDate();
   let month=(new Date).getMonth()+1;
   let year=(new Date).getFullYear();
+  let minutes= (new Date).getMinutes();
   if(month<10){
   this.today=day+'/0'+month;
 } else{
     this.today=day+'/'+month;
 }
+if (minutes<10){
+minutes= '0'+(new Date).getMinutes();
+}
   console.log(this.today);
-  this.todayfull=this.today+'/'+year+' '+(new Date).getHours() +':'+ (new Date).getMinutes();
+  this.todayfull=this.today+'/'+year+' '+(new Date).getHours() +':'+minutes;
   console.log(this.todayfull);
 },
 
