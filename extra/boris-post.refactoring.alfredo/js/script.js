@@ -277,18 +277,18 @@ mounted() {
 
 // updated:function(){
 // var messages=document.getElementsByClassName("messages");
-// var overjoy=document.getElementsByClassName('overjoy')[0];
+// var overlay=document.getElementsByClassName('overlay')[0];
 // var dropdownContainer=document.getElementsByClassName('dropdown-container');
 //
 // function blur(){
-//   if (overjoy.className.includes('blur')){
-//       overjoy.classList.remove('blur');}
+//   if (overlay.className.includes('blur')){
+//       overlay.classList.remove('blur');}
 //   }
 //
 //  for (let v = 0; v < messages.length; v++) {
 //   messages[v].addEventListener('click',function(){
-//     if (!overjoy.className.includes('blur')){
-//      overjoy.classList.add('blur')}
+//     if (!overlay.className.includes('blur')){
+//      overlay.classList.add('blur')}
 //    if (messages.length==0){
 //      blur();
 //    }
