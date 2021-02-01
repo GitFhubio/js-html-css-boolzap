@@ -19,7 +19,7 @@
   </div>
     <div id="boolzapp" class="flex">
       <div class="overjoy">
-      </div>    
+      </div>
       <aside>
         <!-- sezione mio profilo -->
         <div class="myprofile flex">
@@ -89,12 +89,8 @@
           </div>
         </div>
         <div class="chat">
-        <div class="background-chat">
-        </div>
        <div class="bubble flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
-         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status" >
-           <div class="background-message">
-           </div>
+         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
            <!-- versione2 -->
            <!-- <div class="bubble-content flex" @click="message.show = !message.show">
           <h3 v-if="contact.messages.length > 0">{{message.text}}</h3>

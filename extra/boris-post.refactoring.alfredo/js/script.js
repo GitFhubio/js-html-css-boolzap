@@ -275,36 +275,35 @@ mounted() {
   this.nowTime();
 },
 
-updated:function(){
-var messages=document.getElementsByClassName("messages");
-var overjoy=document.getElementsByClassName('overjoy')[0];
-var dropdownContainer=document.getElementsByClassName('dropdown-container');
-
-function blur(){
-  if (overjoy.className.includes('blur')){
-      overjoy.classList.remove('blur');}
-  }
-
- for (let v = 0; v < messages.length; v++) {
-  messages[v].addEventListener('click',function(){
-    if (!overjoy.className.includes('blur')){
-     overjoy.classList.add('blur')}
-   if (messages.length==0){
-     blur();
-   }
- })}
-
-  document.body.addEventListener('click',function(event){
-      for (let x = 0; x < dropdownContainer.length; x++) {
-        if(!event.target.className.includes('bubble-content') && !event.target.className.includes('into-bubble')){
-       blur();
-        if(dropdownContainer[x].className.includes('show')){
-      dropdownContainer[x].classList.remove('show');
-      dropdownContainer[x].style.display='none'
-      }
-     }
-  }
-  })
-  }
+// updated:function(){
+// var messages=document.getElementsByClassName("messages");
+// var overjoy=document.getElementsByClassName('overjoy')[0];
+// var dropdownContainer=document.getElementsByClassName('dropdown-container');
+//
+// function blur(){
+//   if (overjoy.className.includes('blur')){
+//       overjoy.classList.remove('blur');}
+//   }
+//
+//  for (let v = 0; v < messages.length; v++) {
+//   messages[v].addEventListener('click',function(){
+//     if (!overjoy.className.includes('blur')){
+//      overjoy.classList.add('blur')}
+//    if (messages.length==0){
+//      blur();
+//    }
+//  })}
+//   document.body.addEventListener('click',function(event){
+//       for (let x = 0; x < dropdownContainer.length; x++) {
+//         if(!event.target.className.includes('bubble-content') && !event.target.className.includes('into-bubble')){
+//        blur();
+//         if(dropdownContainer[x].className.includes('show')){
+//       dropdownContainer[x].classList.remove('show');
+//       dropdownContainer[x].style.display='none'
+//       }
+//      }
+//   }
+//   })
+//   }
 
 });
