@@ -238,7 +238,7 @@ if (minutes<10){
 minutes= '0'+(new Date).getMinutes();
 }
   console.log(this.today);
-  this.todayfull=this.today+'/'+year+' '+(new Date).getHours() +':'+minutes;
+  this.todayfull=this.today+'/'+year+'  '+(new Date).getHours() +':'+minutes;
   console.log(this.todayfull);
 },
 
