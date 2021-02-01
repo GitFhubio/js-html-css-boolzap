@@ -12,14 +12,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="overlay">
+  </div>
   <div class="wrapper">
   <header>
   </header>
   <div class="container">
   </div>
     <div id="boolzapp" class="flex">
-      <div class="overlay">
-      </div>
       <aside>
         <!-- sezione mio profilo -->
         <div class="myprofile flex">
@@ -111,12 +111,12 @@
         </div>
          <div class="dropdown-container" :class="{show: contact.messages[ind].show}" v-show="contact.messages[ind].show">
            <ul class="dropdown">
-             <li><span>Importante</span><i class="far fa-star"></i> </li>
-             <li><span>Rispondi</span><i class="fas fa-reply"></i></li>
-             <li><span>Inoltra</span><i class="fas fa-share"></i></li>
-             <li><span>Inoltra</span><i class="fas fa-share"></i></li>
-             <li><span>Info</span><i class="fas fa-info-circle"></i></li>
-             <li @click="removeMessage(contact,ind)"><span>Elimina</span><i class="fas fa-trash"></i></li>
+             <li><span class="drop">Importante</span><i class="far fa-star"></i> </li>
+             <li><span class="drop">Rispondi</span><i class="fas fa-reply"></i></li>
+             <li><span class="drop">Inoltra</span><i class="fas fa-share"></i></li>
+             <li><span class="drop">Copia</span><i class="fas fa-copy"></i></li>
+             <li><span class="drop">Info</span><i class="fas fa-info-circle"></i></li>
+             <li @click="removeMessage(contact,ind)"><div class="remove"></div><span class="drop">Elimina</span><i class="fas fa-trash"></i></li>
             </ul>
         </div>
         <!-- fine versione 1 -->
