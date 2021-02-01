@@ -91,7 +91,8 @@ contacts: [
       avatar:'_io',
       visible:false,
     },
-    newMessage:""
+    newMessage:"",
+    search:""
 }
 ,methods:{
 nowActive:function(index){
