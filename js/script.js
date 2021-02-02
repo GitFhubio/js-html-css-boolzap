@@ -107,6 +107,7 @@ contacts: [
       visible:false,
     },
     newMessage:"",
+    answer:"",
     today:"",
     todayfull:"",
     search:""
@@ -123,6 +124,26 @@ this.contacts[index].visible=true;
 addMessage:function(){
  let msg=this.newMessage;
  let todayfull=this.todayfull;
+let answer=this.anwer;
+ let saluti=['ciao','buongiorno','buonasera','buonanotte'];
+ let dichiarazioni=['ti amo','ti voglio bene','ti penso spesso']
+ let insulti=['mi fai schifo','pezzo di merda','vaffanculo']
+ let frasidablocco=['Che bello jQuery','Che fenomeno Insigne','La mia serie preferita è la Casa di Carta,la tua invece?']
+if (dichiarazioni.includes(msg)){
+  answer=msg+' anch\'io'
+}
+if(saluti.includes(msg)){
+  answer=msg
+}
+if(insulti.includes(msg)){
+  answer='Non capisco il motivo di questo insulto.'
+}
+if(frasidablocco.includes(msg)){
+  answer='Ora ti blocco.'
+}
+
+// valutare switch
+
   this.contacts.forEach((item, i) => {
   if(item.visible==true && msg!=''){
     // oppure item.messages.push()
@@ -134,7 +155,7 @@ addMessage:function(){
       }];
       setTimeout(function(){
            item.messages=[...item.messages,{
-             text:'ok',
+             text:answer,
              status:'received',
              date:todayfull}]
           },1000);
