@@ -232,17 +232,19 @@ LastChatToday:function(contact){
         return false;
       }
   }
-},
+}
+,
 
 mounted() {
  this.nowTime();
- setInterval(this.nowTime,1000)
+ setInterval(this.nowTime,1000);
 },
 
 updated:function(){
 // funzione per dare blur al click su dropdown,ho usato layer in absolute con z-index minore di z-index dropdown e applicato backdrop-filter (che fa il blur di ciò che è sotto il layer non del layer stesso)
 const messages=document.getElementsByClassName("messages");
 const overlay=document.getElementsByClassName('overlay')[0];
+const chat=document.querySelector(".chat")
 const dropdownContainer=document.getElementsByClassName('dropdown-container');
 function blur(){
   if (overlay.className.includes('blur')){
@@ -279,7 +281,8 @@ function blur(){
 
       }
   })
-
+// https://stackoverflow.com/questions/270612/scroll-to-bottom-of-div
+  chat.scrollTop = chat.scrollHeight;
   }
 
 });
