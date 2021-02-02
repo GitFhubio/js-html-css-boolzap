@@ -111,7 +111,14 @@ addMessage:function(){
       date: '10/01/2020 15:30:55',
       text: msg,
       status: 'sent'
-      }]; }
+      }];
+      setTimeout(function(){
+           item.messages=[...item.messages,{
+             text:'ok',
+             status:'received',
+             date: '10/01/2020 15:30:56'}]
+          },1000);
+    }
   });
   this.newMessage='';
 }
