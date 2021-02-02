@@ -122,15 +122,23 @@ this.contacts[index].visible=true;
 ,
 addMessage:function(){
  let msg=this.newMessage;
+ let todayfull=this.todayfull;
   this.contacts.forEach((item, i) => {
   if(item.visible==true && msg!=''){
     // oppure item.messages.push()
       item.messages=[...item.messages,{
-      date:this.todayfull,
+      date:todayfull,
       text: msg,
       status: 'sent',
       show:false
-      }]; }
+      }];
+      setTimeout(function(){
+           item.messages=[...item.messages,{
+             text:'ok',
+             status:'received',
+             date:todayfull}]
+          },1000);
+    }
   });
   this.newMessage='';
 },
