@@ -212,11 +212,29 @@ function blur(){
    }
  })}
   document.body.addEventListener('click',function(event){
-     console.log(event.target);
         if(event.target.className.includes('remove')){
        blur();
   }
   })
+
+// funzione per intercettare click per chiudere dropdown outside dropdown
+  let contacts= this.contacts;
+  document.body.addEventListener('click',function(){
+           for (let x = 0; x < dropdownContainer.length; x++) {
+             if(!event.target.className.includes('bubble-content') && !event.target.className.includes('into-bubble')){
+            blur();
+             if(dropdownContainer[x].className.includes('show')){
+               contacts.forEach((item, i) => {
+                       item.messages.forEach((el, v) => {
+                          el.show=false;
+                   });
+                   });
+           }
+          }
+
+      }
+  })
+
   }
 
 });
