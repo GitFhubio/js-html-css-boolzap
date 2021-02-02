@@ -106,6 +106,10 @@ contacts: [
       avatar:'_io',
       visible:false,
     },
+    risposte : {
+    saluti : ['ciao','buongiorno','buonasera','buonanotte'],
+    dichiarazioni : ['ti amo','ti voglio bene','ti penso spesso'],
+    insulti : ['mi fai schifo','pezzo di merda','vaffanculo']},
     newMessage:"",
     answer:"",
     today:"",
@@ -125,21 +129,16 @@ addMessage:function(){
  let msg=this.newMessage;
  let todayfull=this.todayfull;
 let answer=this.anwer;
- let saluti=['ciao','buongiorno','buonasera','buonanotte'];
- let dichiarazioni=['ti amo','ti voglio bene','ti penso spesso']
- let insulti=['mi fai schifo','pezzo di merda','vaffanculo']
- let frasidablocco=['Che bello jQuery','Che fenomeno Insigne','La mia serie preferita è la Casa di Carta,la tua invece?']
-if (dichiarazioni.includes(msg)){
-  answer=msg+' anch\'io'
+let risposte=this.risposte;
+
+if (risposte.saluti.includes(msg)){
+  answer= msg+' a te'
 }
-if(saluti.includes(msg)){
-  answer=msg
+if (risposte.insulti.includes(msg)){
+  answer= 'Mi sembra un insulto gratuito'
 }
-if(insulti.includes(msg)){
-  answer='Non capisco il motivo di questo insulto.'
-}
-if(frasidablocco.includes(msg)){
-  answer='Ora ti blocco.'
+if (risposte.dichiarazioni.includes(msg)){
+  answer= msg+'anch\'io';
 }
 
 // valutare switch
