@@ -152,17 +152,37 @@ searchUser:function(){
       }
   });
 },
-nowTime:function(){
+dropdown(contact,ind){
+// se è aperto chiudilo altrimenti ho cliccato per aprire,quindi chiudi gli altri se sono aperti
+  if (contact.messages[ind].show==true){
+   contact.messages[ind].show=false;
+}else{
+this.contacts.forEach((item, i) => {
+        item.messages.forEach((el, v) => {
+           el.show=false;
+    });
+    });
+       contact.messages[ind].show=true;
+   }
+  }
+,
+removeMessage(contact,ind){
+   contact.messages.splice(ind,1);
+      // Vue.delete(contact.messages,ind);
+}
+,
+// funzione aggiuntiva per calcolare tempo
+dateTime:function(){
   // console.log((new Date).toLocaleDateString());
   // sarebbe stata più facile da usare ma ha problemi zero e avrei dovuto fare
   // slice di lunghezza diversa se data è 3/10 o 10/10
-  let day=(new Date).getDate();
-  let month=(new Date).getMonth()+1;
-  let year=(new Date).getFullYear();
-  let minutes=(new Date).getMinutes();
-  let hours=(new Date).getHours();
+  let day=new Date().getDate();
+  let month=new Date().getMonth()+1;
+  let year=new Date().getFullYear();
+  let minutes=new Date().getMinutes();
+  let hours=new Date().getHours();
   if (day<10){
-      day='0'+day
+      day='0'+day;
       }
   if (month<10){
       month='0'+month;
@@ -172,37 +192,23 @@ nowTime:function(){
   }
   this.today=day+'/'+month;
   this.todayfull=this.today+'/'+year+' '+hours+':'+minutes;
+}
+,
+nowTime(){
+  this.dateTime(new Date());
 },
-
 LastChatToday:function(contact){
     if(contact.messages[contact.messages.length-1].date.slice(0,5) == this.today){
          return true }
       else {
         return false;
       }
-  },
-  removeMessage(contact,ind){
-     contact.messages.splice(ind,1);
-        // Vue.delete(contact.messages,ind);
   }
-  ,
-  dropdown(contact,ind){
-// se è aperto chiudilo altrimenti ho cliccato per aprire,quindi chiudi gli altri se sono aperti
-    if (contact.messages[ind].show==true){
-     contact.messages[ind].show=false;
-  }else{
-  this.contacts.forEach((item, i) => {
-          item.messages.forEach((el, v) => {
-             el.show=false;
-      });
-      });
-         contact.messages[ind].show=true;
-     }
-    }
 },
-mounted() {
 
-  this.nowTime();
+mounted() {
+ this.nowTime();
+ setInterval(this.nowTime,1000)
 },
 
 updated:function(){
