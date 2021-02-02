@@ -130,7 +130,8 @@ addMessage:function(){
  let todayfull=this.todayfull;
 let answer=this.anwer;
 let risposte=this.risposte;
-
+let categorie = [].concat.apply([],Object.values(risposte));
+if (categorie.includes(msg)){
 if (risposte.saluti.includes(msg)){
   answer= msg+' a te'
 }
@@ -139,6 +140,9 @@ if (risposte.insulti.includes(msg)){
 }
 if (risposte.dichiarazioni.includes(msg)){
   answer= msg+'anch\'io';
+}
+} else {
+  answer='ok';
 }
 
 // valutare switch
