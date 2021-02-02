@@ -156,22 +156,26 @@ nowTime:function(){
   let day=(new Date).getDate();
   let month=(new Date).getMonth()+1;
   let year=(new Date).getFullYear();
-  let minutes= (new Date).getMinutes();
-  if(month<10){
-  this.today=day+'/0'+month;
-} else{
-    this.today=day+'/'+month;
-}
-if (minutes<10){
-minutes= '0'+(new Date).getMinutes();
-}
+  let minutes=(new Date).getMinutes();
+  let hours=(new Date).getHours();
+  if (day<10){
+      day='0'+day
+      }
+  if (month<10){
+      month='0'+month;
+  }
+  if (minutes<10){
+  minutes= '0'+minutes;
+  }
+  this.today=day+'/'+month;
   console.log(this.today);
-  this.todayfull=this.today+'/'+year+'  '+(new Date).getHours() +':'+minutes;
+  this.todayfull=this.today+'/'+year+' '+hours+':'+minutes;
   console.log(this.todayfull);
 },
 
 LastChatToday:function(contact){
-
+console.log(contact.messages[contact.messages.length-1].date.slice(0,5));
+console.log(this.today);
     if(contact.messages[contact.messages.length-1].date.slice(0,5) == this.today){
          return true }
       else {
