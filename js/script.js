@@ -109,7 +109,8 @@ contacts: [
     risposte : {
     saluti : ['ciao','buongiorno','buonasera','buonanotte'],
     dichiarazioni : ['ti amo','ti voglio bene','ti penso spesso'],
-    insulti : ['mi fai schifo','pezzo di merda','vaffanculo']},
+    insulti : ['mi fai schifo','pezzo di merda','vaffanculo'],
+    frasidablocco: ['Che bello jQuery','La Casa di Carta è la mia serie preferita']},
     newMessage:"",
     answer:"",
     today:"",
@@ -140,6 +141,9 @@ if (risposte.insulti.includes(msg)){
 }
 if (risposte.dichiarazioni.includes(msg)){
   answer= msg+'anch\'io';
+}
+if(risposte.frasidablocco.includes(msg)){
+    answer= 'Mi vedo costretto a bloccarti.';
 }
 } else {
   answer='ok';
