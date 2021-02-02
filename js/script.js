@@ -153,6 +153,9 @@ searchUser:function(){
   });
 },
 nowTime:function(){
+  // console.log((new Date).toLocaleDateString());
+  // sarebbe stata più facile da usare ma ha problemi zero e avrei dovuto fare
+  // slice di lunghezza diversa se data è 3/10 o 10/10
   let day=(new Date).getDate();
   let month=(new Date).getMonth()+1;
   let year=(new Date).getFullYear();
@@ -168,19 +171,14 @@ nowTime:function(){
   minutes= '0'+minutes;
   }
   this.today=day+'/'+month;
-  console.log(this.today);
   this.todayfull=this.today+'/'+year+' '+hours+':'+minutes;
-  console.log(this.todayfull);
 },
 
 LastChatToday:function(contact){
-console.log(contact.messages[contact.messages.length-1].date.slice(0,5));
-console.log(this.today);
     if(contact.messages[contact.messages.length-1].date.slice(0,5) == this.today){
          return true }
       else {
         return false;
-
       }
   },
   removeMessage(contact,ind){
@@ -208,6 +206,7 @@ mounted() {
 },
 
 updated:function(){
+// funzione per dare blur al click su dropdown,ho usato layer in absolute con z-index minore di z-index dropdown e applicato backdrop-filter (che fa il blur di ciò che è sotto il layer non del layer stesso)
 const messages=document.getElementsByClassName("messages");
 const overlay=document.getElementsByClassName('overlay')[0];
 const dropdownContainer=document.getElementsByClassName('dropdown-container');
@@ -229,7 +228,7 @@ function blur(){
   }
   })
 
-// funzione per intercettare click per chiudere dropdown outside dropdown
+// funzione per intercettare click outside dropdown per chiudere dropdown
   let contacts= this.contacts;
   document.body.addEventListener('click',function(){
            for (let x = 0; x < dropdownContainer.length; x++) {
