@@ -58,7 +58,7 @@
                 </div>
                 <div v-if="contact.messages.length>0">
               <span v-if="LastChatToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
-              <span v-if="!LastChatToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
+              <span v-if="!LastChatToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(0,5)}}</span>
                 </div>
             </div>
           </div>
