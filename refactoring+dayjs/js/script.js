@@ -83,13 +83,13 @@ contacts: [
     visible: true,
     messages: [
       {
-      date: '10/01/2020 15:30:55',
+      date: '04/01/2021 09:11:10',
       text: 'Lo sai che ha aperto una nuova pizzeria?',
       status: 'sent',
       show:false
       },
       {
-      date: '10/01/2020 15:50:00',
+      date: '04/02/2021 09:12:00',
       text: 'Si, ma preferirei andare al cinema',
       status: 'received',
       show:false
@@ -181,10 +181,8 @@ dropdown(ind){
   if (thisContact.messages[ind].show==true){
    thisContact.messages[ind].show=false;
 }else{
-this.contacts.forEach((contact, i) => {
-        contact.messages.forEach((el, v) => {
+        thisContact.messages.forEach((el, v) => {
            el.show=false;
-    });
     });
        thisContact.messages[ind].show=true;
    }
@@ -193,6 +191,9 @@ this.contacts.forEach((contact, i) => {
 removeMessage(ind){
   let thisContact = this.contacts[this.activeIndex];
    thisContact.messages.splice(ind,1);
+           thisContact.messages.forEach((el, v) => {
+              el.show=false;
+       });
       // Vue.delete(contact.messages,ind);
 }
 ,
@@ -201,26 +202,13 @@ dateTime:function(){
   // console.log((new Date).toLocaleDateString());
   // sarebbe stata più facile da usare ma ha problemi zero e avrei dovuto fare
   // slice di lunghezza diversa se data è 3/10 o 10/10
-  let day=new Date().getDate();
-  let month=new Date().getMonth()+1;
-  let year=new Date().getFullYear();
-  let minutes=new Date().getMinutes();
-  let hours=new Date().getHours();
-  if (day<10){
-      day='0'+day;
-      }
-  if (month<10){
-      month='0'+month;
-  }
-  if (minutes<10){
-  minutes= '0'+minutes;
-  }
-  this.today=day+'/'+month;
-  this.todayfull=this.today+'/'+year+' '+hours+':'+minutes;
+
+  this.today=dayjs().format('DD/MM')
+  this.todayfull=dayjs().format('DD/MM/YYYY HH:mm')
 }
 ,
 nowTime(){
-  this.dateTime(new Date());
+  this.dateTime(dayjs());
 },
 LastChatTodayCurrent:function(activeIndex){
   if(this.contacts[activeIndex].messages[this.contacts[activeIndex].messages.length-1].date.slice(0,5) == this.today){
@@ -243,6 +231,8 @@ LastChatTodayOthers:function(index){
 mounted() {
  this.nowTime();
  setInterval(this.nowTime,1000);
+  console.log(dayjs().format('DD/MM/YYYY'));
+
 },
 
 // updated invece viene chiamato ogni volta che c'è un rerender del componente(in vue il dom dipende dai dati quindi in pratica ogni volta che un dato cambia)
