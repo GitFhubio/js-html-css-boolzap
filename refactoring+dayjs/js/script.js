@@ -103,9 +103,9 @@ contacts: [
     },
     risposte : {
     saluti : ['ciao','buongiorno','buonasera','buonanotte'],
-    dichiarazioni : ['ti amo','ti voglio bene','ti penso spesso'],
+    affetto : ['ti amo','ti voglio bene','ti penso spesso'],
     insulti : ['mi fai schifo','pezzo di merda','vaffanculo'],
-    frasidablocco: ['Che bello jQuery','La Casa di Carta è la mia serie preferita']
+    frasidablocco: ['Che bello jQuery','La Casa di Carta è la mia serie preferita','Mai visto Boris']
   },
     newMessage:"",
     answer:"",
@@ -118,13 +118,33 @@ contacts: [
 
 nowActive:function(index){
 this.activeIndex=index;
-},
-isNowActive: function(index){
-  if (this.activeIndex==index){
-    return true;
-  } else{ return false;}
 }
 ,
+Bot:function(){
+  let output=this.answer;
+ let msg=this.newMessage;
+  let risposte=this.risposte;
+  let categorie = [].concat.apply([],Object.values(risposte));
+
+  if (categorie.includes(msg)){
+  if (risposte.saluti.includes(msg)){
+    output= msg+' a te'
+  }
+  if (risposte.insulti.includes(msg)){
+    output= 'Mi sembra un insulto gratuito'
+  }
+  if (risposte.affetto.includes(msg)){
+    output= msg+'anch\'io';
+  }
+  if(risposte.frasidablocco.includes(msg)){
+    output= 'Mi vedo costretto a bloccarti.';
+  }
+  } else {
+    output='ok';
+  }
+return output;
+},
+
 contactLastDate:function(index){
   const messages=this.contacts[index].messages;
   const lastIndex=messages.length-1;
@@ -134,28 +154,9 @@ contactLastDate:function(index){
 addMessage:function(){
  let msg=this.newMessage;
  let todayfull=this.todayfull;
-let answer=this.anwer;
-let risposte=this.risposte;
-let categorie = [].concat.apply([],Object.values(risposte));
-
-if (categorie.includes(msg)){
-if (risposte.saluti.includes(msg)){
-  answer= msg+' a te'
-}
-if (risposte.insulti.includes(msg)){
-  answer= 'Mi sembra un insulto gratuito'
-}
-if (risposte.dichiarazioni.includes(msg)){
-  answer= msg+'anch\'io';
-}
-if(risposte.frasidablocco.includes(msg)){
-    answer= 'Mi vedo costretto a bloccarti.';
-}
-} else {
-  answer='ok';
-}
-
   let item = this.contacts[this.activeIndex];
+ let answer=this.Bot();
+
   if( msg!=''){
 item.messages=[...item.messages,{
       date:todayfull,
