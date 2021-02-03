@@ -171,6 +171,7 @@ overflow-y: auto;
 background-image: url('../img/mine.jpg');
 }
 .messages{
+  word-break: break-all;
   position:relative;
   width:350px;
   border-radius:10px;
