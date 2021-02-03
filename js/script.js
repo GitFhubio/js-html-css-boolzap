@@ -184,7 +184,7 @@ if(risposte.frasidablocco.includes(msg)){
 searchUser:function(){
   let search=this.search;
   this.contacts.forEach((item, i) => {
-    if(search!='' && !item.name.toLowerCase().includes(search.toLowerCase())){
+    if(search!='' && !item.name.toLowerCase().startsWith(search.toLowerCase())){
       item.matched=false; }
       else if(search==''){
         item.matched=true;
