@@ -58,8 +58,8 @@
                 </div>
                 </div>
                 <div v-if="contact.messages.length>0">
-              <span v-if="LastChatToday(index)" class="date">{{contacts[index].messages[contacts[index].messages.length-1].date.slice(11,16)}}</span>
-              <span v-if="!LastChatToday(index)" class="date">{{contacts[index].messages[contacts[index].messages.length-1].date.slice(0,5)}}</span>
+              <span v-if="LastChatToday(index)" class="date">{{contactLastTime(index)}}</span>
+              <span v-if="!LastChatToday(index)" class="date">{{contactLastDate(index)}}</span>
                 </div>
             </div>
           </div>
@@ -74,8 +74,8 @@
             <div v-if="contacts[activeIndex].messages.length>0">
               <h2>{{contacts[activeIndex].name}}</h2>
               <!-- (nella versione con index per contacts[activeIndex] e funzione che ritornava data dell'ultimo messaggio in metodi avrei evitato v-for e lungaggini in html -->
-              <p v-if="LastChatToday(activeIndex)">Ultimo accesso oggi alle {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.slice(11,16)}}</p>
-              <p v-if="!LastChatToday(activeIndex)">Ultimo accesso il {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.slice(0,5)}} alle {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.slice(11,16)}}</p>
+              <p v-if="LastChatToday(activeIndex)">Ultimo accesso oggi alle {{contactLastTime(activeIndex)}}</p>
+              <p v-if="!LastChatToday(activeIndex)">Ultimo accesso il {{contactLastDate(activeIndex)}} alle {{contactLastTime(activeIndex)}}</p>
             </div>
             <div v-else>
               <h2>{{contacts[activeIndex].name}}</h2>

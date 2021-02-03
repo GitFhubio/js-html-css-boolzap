@@ -148,8 +148,15 @@ return output;
 contactLastDate:function(index){
   const messages=this.contacts[index].messages;
   const lastIndex=messages.length-1;
-  const lastDate=messages[lastIndex].date;
+  const lastDate=messages[lastIndex].date.slice(0,5);
   return lastDate;
+},
+
+contactLastTime:function(index){
+  const messages=this.contacts[index].messages;
+  const lastIndex=messages.length-1;
+  const lastTime=messages[lastIndex].date.slice(11,16);
+  return lastTime;
 },
 addMessage:function(){
  let msg=this.newMessage;
