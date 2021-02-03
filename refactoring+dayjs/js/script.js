@@ -160,6 +160,7 @@ item.messages=[...item.messages,{
            item.messages=[...item.messages,{
              text:answer,
              status:'received',
+             show:false,
              date:todayfull}]
           },1000);
     }
