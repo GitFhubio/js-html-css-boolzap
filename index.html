@@ -72,6 +72,7 @@
             <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
             <div v-if="contact.messages.length>0">
               <h2>{{contact.name}}</h2>
+              <!-- (nella versione con index per contacts[activeIndex] e funzione che ritornava data dell'ultimo messaggio in metodi avrei evitato v-for e lungaggini in html -->
               <p v-if="LastChatToday(contact)">Ultimo accesso oggi alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
               <p v-if="!LastChatToday(contact)">Ultimo accesso il {{contact.messages[contact.messages.length-1].date.slice(0,5)}} alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
             </div>
@@ -91,7 +92,7 @@
         <div class="chat">
        <div class="bubble flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
          <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
-           <!-- versione2 -->
+       <!-- versione2 -->
            <!-- <div class="bubble-content flex" @click="message.show = !message.show">
           <h3 v-if="contact.messages.length > 0">{{message.text}}</h3>
           <p v-if="contact.messages.length > 0">{{message.date.slice(11,16)}}</p>

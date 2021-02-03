@@ -115,7 +115,8 @@ contacts: [
     answer:"",
     today:"",
     todayfull:"",
-    search:""
+    search:"",
+    // activeIndex:0
 }
 ,methods:{
 nowActive:function(index){
@@ -126,6 +127,16 @@ nowActive:function(index){
 this.contacts[index].visible=true;
 }
 ,
+// openConversation:function(index){
+// this.activeIndex=index;
+// }
+// ,
+// contactLastDate:function(index){
+//   const messages=this.contacts[index].messages;
+//   const lastIndex=messages.length-1;
+//   const lastDate=messages[lastIndex].date;
+//   return lastDate;
+// },
 addMessage:function(){
  let msg=this.newMessage;
  let todayfull=this.todayfull;
@@ -234,12 +245,13 @@ LastChatToday:function(contact){
   }
 }
 ,
-
+// mounted ha luogo a livello di Virtual Dom,prima che l'utente veda qualcosa.
 mounted() {
  this.nowTime();
  setInterval(this.nowTime,1000);
 },
 
+// updated invece viene chiamato ogni volta che c'è un rerender del componente(in vue il dom dipende dai dati quindi in pratica ogni volta che un dato cambia)
 updated:function(){
 // funzione per dare blur al click su dropdown,ho usato layer in absolute con z-index minore di z-index dropdown e applicato backdrop-filter (che fa il blur di ciò che è sotto il layer non del layer stesso)
 const messages=document.getElementsByClassName("messages");
