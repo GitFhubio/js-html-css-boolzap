@@ -210,7 +210,7 @@ let boolzapp = new Vue({
         thisContact.messages.forEach((el, v) => {
           el.show=false;
         });
-        // Vue.delete(contact.messages,ind);
+        // Vue.delete(contact.messages,ind); alternativa
       }
       ,
       // funzione aggiuntiva per calcolare tempo
@@ -218,6 +218,7 @@ let boolzapp = new Vue({
         // console.log((new Date).toLocaleDateString());
         // sarebbe stata più facile da usare ma ha problemi zero e avrei dovuto fare
         // slice di lunghezza diversa se data è 3/10 o 10/10
+         // per cui l'ho fatto manualmente nella versione pre-refactoring ma poi ho importato dayjs
         this.today=dayjs().format('DD/MM')
         this.todayfull=dayjs().format('DD/MM/YYYY HH:mm')
       }
@@ -235,17 +236,6 @@ let boolzapp = new Vue({
 
         }
       },
-      // LastChatTodayOthers:function(index){
-      //
-      //   if(this.contacts[index].messages[this.contacts[index].messages.length-1].date.slice(0,5) == this.today){
-      //          return true }
-      //       else {
-      //         return false;
-      //       }
-      // }
-      // }
-      // ,
-      // mounted ha luogo a livello di Virtual Dom,prima che l'utente veda qualcosa.
       mounted() {
         this.nowTime();
         setInterval(this.nowTime,1000);
