@@ -5,7 +5,6 @@
   <title>Base esercizio whatsapp</title>
   <meta name="description" content="Esercizio">
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
@@ -49,7 +48,7 @@
         </div>
         <div class="contacts-list">
           <div class="contacts">
-            <div v-for="(contact,index) in contacts" class="flex" v-if="contact.visible==true" @click='nowActive(index)'>
+            <div v-for="(contact,index) in contacts" class="flex" v-if="contact.matched==true" @click='nowActive(index)'>
               <div class="flex">
               <img  :src="'img/avatar'+contact.avatar+'.jpg'" alt="contact">
                <div class="contact-box flex">
@@ -58,8 +57,8 @@
                 </div>
                 </div>
                 <div v-if="contact.messages.length>0">
-              <span v-if="LastChatToday(index)" class="date">{{contacts[index].messages[contacts[index].messages.length-1].date.slice(11,16)}}</span>
-              <span v-if="!LastChatToday(index)" class="date">{{contacts[index].messages[contacts[index].messages.length-1].date.slice(0,5)}}</span>
+              <span v-if="LastChatToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(11,16)}}</span>
+              <span v-if="!LastChatToday(contact)" class="date">{{contact.messages[contact.messages.length-1].date.slice(0,5)}}</span>
                 </div>
             </div>
           </div>
@@ -69,19 +68,20 @@
       <!-- inizio main section -->
       <section>
         <div class="current-user flex">
-          <div class="profile flex" >
-            <img :src="'img/avatar'+contacts[activeIndex].avatar+'.jpg'" alt="current-contact">
-            <div v-if="contacts[activeIndex].messages.length>0">
-              <h2>{{contacts[activeIndex].name}}</h2>
+          <div v-for="(contact,index) in contacts" v-if="contact.visible==true" class="profile flex" >
+            <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="current-contact">
+            <div v-if="contact.messages.length>0">
+              <h2>{{contact.name}}</h2>
               <!-- (nella versione con index per contacts[activeIndex] e funzione che ritornava data dell'ultimo messaggio in metodi avrei evitato v-for e lungaggini in html -->
-              <p v-if="LastChatToday(activeIndex)">Ultimo accesso oggi alle {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.slice(11,16)}}</p>
-              <p v-if="!LastChatToday(activeIndex)">Ultimo accesso il {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.slice(0,5)}} alle {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.slice(11,16)}}</p>
+              <p v-if="LastChatToday(contact)">Ultimo accesso oggi alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
+              <p v-if="!LastChatToday(contact)">Ultimo accesso il {{contact.messages[contact.messages.length-1].date.slice(0,5)}} alle {{contact.messages[contact.messages.length-1].date.slice(11,16)}}</p>
             </div>
             <div v-else>
-              <h2>{{contacts[activeIndex].name}}</h2>
+              <h2>{{contact.name}}</h2>
               <p></p>
             </div>
           </div>
+
           <div class="tools">
             <i class="fas fa-search" aria-hidden="true"></i>
             <i class="fas fa-paperclip" aria-hidden="true"></i>
@@ -90,20 +90,34 @@
           </div>
         </div>
         <div class="chat">
-       <div class="bubble flex">
-         <div v-for="(message,ind) in contacts[activeIndex].messages" :class="'messages flex '+message.status">
-         <div class="bubble-content flex" @click="dropdown(ind)">
-        <h3 class="into-bubble" v-if="contacts[activeIndex].messages.length > 0">{{message.text}}</h3>
-        <p class="into-bubble" v-if="contacts[activeIndex].messages.length > 0">{{message.date.slice(11,16)}}</p>
+       <div class="bubble flex" v-for="(contact,index) in contacts" v-if="contact.visible==true">
+         <div v-for="(message,ind) in contact.messages" :class="'messages flex '+message.status">
+       <!-- versione2 -->
+           <!-- <div class="bubble-content flex" @click="message.show = !message.show">
+          <h3 v-if="contact.messages.length > 0">{{message.text}}</h3>
+          <p v-if="contact.messages.length > 0">{{message.date.slice(11,16)}}</p>
+          </div>
+          <span class="dropdown" :class="{show: contact.messages[ind].show}"
+            v-show="contact.messages[ind].show">
+                <ul>
+                <li><a href="#">Info</a></li>
+                <li><a href="#" @click="removeMessage(contact,ind)">Elimina</a></li>
+              </ul>
+          </span> -->
+
+<!-- versione1 -->
+         <div class="bubble-content flex" @click="dropdown(contact,ind)">
+        <h3 class="into-bubble" v-if="contact.messages.length > 0">{{message.text}}</h3>
+        <p class="into-bubble" v-if="contact.messages.length > 0">{{message.date.slice(11,16)}}</p>
         </div>
-         <div class="dropdown-container" :class="{show: contacts[activeIndex].messages[ind].show}" v-show="contacts[activeIndex].messages[ind].show">
+         <div class="dropdown-container" :class="{show: contact.messages[ind].show}" v-show="contact.messages[ind].show">
            <ul class="dropdown">
              <li><span class="drop">Importante</span><i class="far fa-star"></i> </li>
              <li><span class="drop">Rispondi</span><i class="fas fa-reply"></i></li>
              <li><span class="drop">Inoltra</span><i class="fas fa-share"></i></li>
              <li><span class="drop">Copia</span><i class="fas fa-copy"></i></li>
              <li><span class="drop">Info</span><i class="fas fa-info-circle"></i></li>
-             <li @click="removeMessage(ind)"><div class="remove"></div><span class="drop">Elimina</span><i class="fas fa-trash"></i></li>
+             <li @click="removeMessage(contact,ind)"><div class="remove"></div><span class="drop">Elimina</span><i class="fas fa-trash"></i></li>
             </ul>
         </div>
         <!-- fine versione 1 -->
@@ -112,8 +126,6 @@
       </div>
       <!-- chiusura for esterno -->
         </div>
-        <!-- chiusura chat -->
-
         <!-- chiusura chat -->
         <div class="write-message flex">
           <div class="icon-left flex">

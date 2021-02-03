@@ -104,8 +104,8 @@ contacts: [
     risposte : {
     saluti : ['ciao','buongiorno','buonasera','buonanotte'],
     affetto : ['ti amo','ti voglio bene','ti penso spesso'],
-    insulti : ['mi fai schifo','pezzo di merda','vaffanculo'],
-    frasidablocco: ['Che bello jQuery','La Casa di Carta è la mia serie preferita','Mai visto Boris']
+    insulti : ['mi fai schifo','pezzo di merda','vaffanculo','stronzo'],
+    frasidablocco: ['che bello jQuery','la Casa di Carta è la mia serie preferita','mai visto Boris','I veri programmatori non usano framework']
   },
     newMessage:"",
     answer:"",
