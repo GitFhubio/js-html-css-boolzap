@@ -105,18 +105,24 @@ contacts: [
     saluti : ['ciao','buongiorno','buonasera','buonanotte'],
     dichiarazioni : ['ti amo','ti voglio bene','ti penso spesso'],
     insulti : ['mi fai schifo','pezzo di merda','vaffanculo'],
-    frasidablocco: ['Che bello jQuery','La Casa di Carta è la mia serie preferita']},
+    frasidablocco: ['Che bello jQuery','La Casa di Carta è la mia serie preferita']
+  },
     newMessage:"",
     answer:"",
     today:"",
     todayfull:"",
     search:"",
-    activeIndex:0
+    activeIndex:0,
 }
 ,methods:{
 
 nowActive:function(index){
 this.activeIndex=index;
+},
+isNowActive: function(index){
+  if (this.activeIndex==index){
+    return true;
+  } else{ return false;}
 }
 ,
 contactLastDate:function(index){
@@ -131,6 +137,7 @@ addMessage:function(){
 let answer=this.anwer;
 let risposte=this.risposte;
 let categorie = [].concat.apply([],Object.values(risposte));
+
 if (categorie.includes(msg)){
 if (risposte.saluti.includes(msg)){
   answer= msg+' a te'
@@ -203,7 +210,6 @@ dateTime:function(){
   // console.log((new Date).toLocaleDateString());
   // sarebbe stata più facile da usare ma ha problemi zero e avrei dovuto fare
   // slice di lunghezza diversa se data è 3/10 o 10/10
-
   this.today=dayjs().format('DD/MM')
   this.todayfull=dayjs().format('DD/MM/YYYY HH:mm')
 }
@@ -211,23 +217,26 @@ dateTime:function(){
 nowTime(){
   this.dateTime(dayjs());
 },
-LastChatTodayCurrent:function(activeIndex){
-  if(this.contacts[activeIndex].messages[this.contacts[activeIndex].messages.length-1].date.slice(0,5) == this.today){
-         return true }
-      else {
-        return false;
-      }
-  },
-LastChatTodayOthers:function(index){
+LastChatToday:function(index){
 
   if(this.contacts[index].messages[this.contacts[index].messages.length-1].date.slice(0,5) == this.today){
          return true }
       else {
         return false;
       }
-}
-}
-,
+
+  }
+},
+// LastChatTodayOthers:function(index){
+//
+//   if(this.contacts[index].messages[this.contacts[index].messages.length-1].date.slice(0,5) == this.today){
+//          return true }
+//       else {
+//         return false;
+//       }
+// }
+// }
+// ,
 // mounted ha luogo a livello di Virtual Dom,prima che l'utente veda qualcosa.
 mounted() {
  this.nowTime();
