@@ -8,7 +8,6 @@ ul{
 }
 body{
 font-family: 'Lato', sans-serif;
-overflow-y: hidden;
 }
 
 /* tool  */
@@ -29,28 +28,19 @@ overflow-y: hidden;
   align-self: flex-start;
 }
 
-
-header {
-  min-width: 1000px;
-  height: 20vh;
-  min-height:50px;
-  background-color: #009688;
+.wrapper {
+  background: linear-gradient(to bottom, #009788 20%, #dbdbd1 20%, #dddbd2, #d2dbdc);
+  width: 100%;
+  /* An element with position: fixed is positioned relative to the viewport*/
+  position: fixed;
 }
 
-.container {
-  min-width: 1000px;
-  height: 80vh;
-  min-height:380px;
-  background-color: #DCDCD2;
-  justify-content: center;
-}
+
 #boolzapp {
-  width: 95vw;
-  height: 95vh;
+  width: 85%;
   min-width: 950px;
-  position: absolute;
-  top:2.5vh;
-  left:2.5vw;
+  height: 95vh;
+  margin: 2.5vh auto;
 }
 
 section{
@@ -273,8 +263,6 @@ height:100%;
   display:block
 }
 .blur{
-  z-index:1;
-  position:absolute;
   backdrop-filter: blur(7px);
   background-color: rgba(0, 0, 0, 0.6);
   width:100%;
