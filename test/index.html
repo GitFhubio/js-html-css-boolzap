@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-todolist</title>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- Fontawesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <!-- Vue -->
+    <!-- Axios -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+.received{
+  background-color:red;
+}
+.sent{
+  background-color:green;
+}
+</style>
+<body>
+<div id="app">
+  cerca
+<input type="text" name="" v-model="search">
+  lista contatti
+<div v-if="searchcontact(contact)" v-for="(contact,index) in contacts" @click="active(index)">
+{{contact.name}}
+</div>
+contatto attivo
+<div>
+{{contacts[indexActive].name}}
+<div class="chat">
+<div v-for="(message,index) in contacts[indexActive].messages">
+  <div style="position:relative;" :class="message.status=='received'? 'received' : 'sent'" @click="showDropdown(message)">
+{{message.text}}
+<div v-if="message.dropdown" style="position:absolute;z-index:1;top:0;left:500px;" class="dropdown" @click="deleteMessage(index)">
+Delete
+</div>
+  </div>
+</div>
+</div>
+<input type="text" name="" v-model="reply" @keyup.enter="sendMessage()">
+</div>
+</div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
